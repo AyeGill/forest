@@ -5,6 +5,7 @@
     systems.url = "github:nix-systems/default";
     forester.url = "sourcehut:~jonsterling/ocaml-forester";
     forest-server.url = "github:kentookura/forest-server";
+    bunnycdn-cli.url = "github:olynch/bunnycdn-cli";
   };
 
   outputs = {
@@ -14,7 +15,8 @@
     flake-utils,
     systems,
     forester,
-    forest-server
+    forest-server,
+    bunnycdn-cli
   }:
     flake-utils.lib.eachSystem (import systems)
     (system: let
@@ -45,42 +47,57 @@
         ''
           ${forest-server.packages.${system}.default}/bin/forest watch $@ -- "build --dev --root ${default-tree}-0001 trees/"
         '';
+        forest = pkgs.stdenv.mkDerivation {
+          name = "localcharts-forest-xml";
+          src = ./.;
+          buildInputs = [
+            tlDist
+            forester-pkg
+          ];
+          buildPhase = ''
+            forester build --root ${default-tree}-0001 trees/
+            mv output/ $out/
+            cp pdfbuilds.json $out/
+          '';
+        };
+        pdfbuilds = pkgs.stdenv.mkDerivation {
+          name = "localcharts-forest-pdfs";
+          unpackPhase = "true";
+          buildInputs = [
+            tlDist
+            pkgs.jq
+          ];
+          buildPhase = ''
+            mkdir -p $out/
+            mkdir latex/
+            while read build
+            do
+              tree=$(echo "$build" | jq -r .tree)
+              style=$(echo "$build" | jq -r .style)
+              ${pkgs.saxon-he}/bin/saxon-he "-s:${forest}/$tree.xml" "-xsl:${forest}/$style.xsl" "-o:$tree.tex"
+              pdflatex "$tree.tex"
+              cp "$tree.pdf" "$out/"
+            done < <(cat ${forest}/pdfbuilds.json | jq -c '.[]')
+          '';
+        };
         default = pkgs.stdenv.mkDerivation {
           name = "localcharts-forest";
-          src = ./.;
-          buildInputs = [tlDist];
+          unpackPhase = "true";
           buildPhase = ''
-            ${forester-pkg}/bin/forester build --root ${default-tree}-0001 trees/
-            mv output/ $out/
-            mv _redirects $out
+            mkdir -p $out/
+            cp -r ${forest}/* $out/
+            cp -r ${pdfbuilds}/* $out/
           '';
         };
         buildkite-deploy = pkgs.writeShellApplication {
           name = "buildkite-deploy";
 
-          runtimeInputs = with pkgs; [ forester-pkg wrangler-pkgs.nodePackages.wrangler curl gnused tlDist ];
+          runtimeInputs = with pkgs; [
+            awscli
+          ];
 
           text = ''
-            forester build --root ${default-tree}-0001 trees/
-            cp _redirects output/
-            cd output/
-            echo -e '\n' >> _redirects
-            for FILE in *.xml; do
-              LOWERCASE_FILE=$(echo "$FILE" | tr '[:upper:]' '[:lower:]')
-              if [ "$LOWERCASE_FILE" != "$FILE" ]; then
-                echo "/$LOWERCASE_FILE /$FILE 301" >> _redirects
-              fi
-            done
-            cd ..
-            wrangler pages deploy --branch "$BUILDKITE_BRANCH" --project-name localcharts-forest output/ | tee wrangler-log
-            DEPLOY_URL=$(sed -n 's/.*Take a peek over at \(.*\)/\1/p' < wrangler-log)
-            curl -L \
-              -X POST \
-                -H "Accept: application/vnd.github+json" \
-                -H "Authorization: Bearer $GITHUB_TOKEN" \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                "https://api.github.com/repos/LocalCharts/forest/commits/$BUILDKITE_COMMIT/comments" \
-                -d "{\"body\":\"Deployed at $DEPLOY_URL\"}"
+            aws s3 sync ${default} s3://forest.next.localcharts.org
           '';
         };
       };

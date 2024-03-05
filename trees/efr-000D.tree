@@ -1,0 +1,23 @@
+\date{2024-03-04}
+\title{Emergent behavior}
+\author{Eigil Rischel}
+\p{Emergent behavior is the name used for an informal collection of related phenomena. The typical situation is that
+    \ul{
+        \li{You have some collection of "systems" and some ways of composing them.}
+        \li{Each system has some "behavior" that you want to know about, and there is a natural way to compose the behaviors, but:}
+        \li{The composite of a bunch of systems' behaviors is not the behaviour of the composite system, but}
+        \li{We do have some sort of "comparison map" situation between the two behaviors}
+
+    }}
+
+\p{A simple formal model of this is a lax monoidal functor #{f: \cC \to \cD} - the objects of #{\cC} are the "systems", the objects of #{\cD} are the "behaviours", we compose systems and behaviours by monoidal product, and we have a comparison map #{f(X) \otimes f(Y) \to f(X \otimes Y)}, but it is not in general an isomorphism.}
+
+\p{More typically, these are bicategories and there is a lax functor between them. For example, #{\cC} may be a category of open graphs, and #{\cD} may be #{\Rel}, with #{f} computing the reachability relation. See eg [this talk](https://obsoletewallstreet.files.wordpress.com/2020/07/categorical_systems_theory.pdf) by Jules Hedges.}
+
+\p{A very closely related phenomenon is the failure of presheaves to be sheaves. This is closer to an "oplax" connection - you can always map from the global sections to compatible local sections, but the map is not always an isomorphism.}
+
+\p{See also:
+\ul{
+    \li{[[puca-hadzihasanovich-genovese-coecke-2023]], which attempts to define an invariant to measure "the failure of compositionality"}
+    \li{[Jules Hedges, lax functors describe emergent effects](https://julesh.com/2019/12/02/lax-functors-describe-emergent-effects/)}
+}}

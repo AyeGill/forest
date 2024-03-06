@@ -1,6 +1,6 @@
 \date{2024-03-04}
 \title{Emergent behavior}
-\author{Eigil Rischel}
+\author{eigil-rischel}
 \p{Emergent behavior is the name used for an informal collection of related phenomena. The typical situation is that
     \ul{
         \li{You have some collection of "systems" and some ways of composing them.}
@@ -22,3 +22,4 @@
     \li{[Jules Hedges, lax functors describe emergent effects](https://julesh.com/2019/12/02/lax-functors-describe-emergent-effects/)}
 }}
 
+\p{An intriguing parallel is found in [Formalizing the presumption of independence](christiano-etal-indep-2022). Their goal is to formalize informal arguments of the form "there's no particular reason to believe that #{X} and #{Y} are correlated in a particular way, so we can guess that #{E(XY) = E(X)E(Y)}". This seems to be about estimating the behavior of a composite system (#{XY}) by composing the behaviors of the components, if we don't have a good way of computing the behavior of the composite}

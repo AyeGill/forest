@@ -1,0 +1,32 @@
+\date{2024-03-06}
+\author{eigil-rischel}
+\title{The presumption of independence as emergent effects}
+\import{macros}
+\def\AffSpcR{#{\cat{AffSpc}\mathbb{R}}}
+\def\Euc{\cat{Euc}}
+\p{The study of emergent effects is generally concerned with \em{sound lower/upper bounds}, e.g a lax functor into #{\Rel} at least gives the guarantee #{F(f)F(g) \Rightarrow F(fg)}. By contrast the viewpoint of "the presumption of independence" is that the approximation just has to be sensible and \em{defeasible}, i.e there's some way to accomodate more and more information about the interactions between systems.}
+
+\p{Perhaps a more central difference is about "categoricity levels" - there is no natural notion of morphism that may or may not exist between #{E(XY)} and #{E(X)E(Y)}, rather they just have a distance (as discussed above, bounding the distance is not really what we're interested in)}
+
+\p{Let \AffSpcR be the category with objects #{\RR^n, n \in \NN}, and morphisms polynomial functions between them.}
+\p{Then there is a \em{non-functor} #{\AffSpcR \to \Euc} which carries objects to themselves, and every morphism #{p} to the function which takes #{(x_1, \dots x_n)} to the expectation of #{p(X_1, X_2, \dots X_n)} if these are independent standard normals with the specified expectations. And the non-functoriality of this gadget is exactly because things may not be independent. But it is not any sort of lax functor (there is not even any bicategorical structure for us to talk about).}
+
+\p{We can construct another functor which carries #{\RR^n} to #{\RR^{n \times n}} instead, which takes in and also outputs information about all the 2-cumulants between the variables (and so on, for higher cumulants). These converge to compositionality in a weird way, which almost looks like goodwillie calculus in reverse (in Goodwillie calculus, you have a tower of \em{less and less} "excisive" approximations to the thing you care about, which in good cases converges to the thing itself)}
+
+\p{Recall the example of reachability for open graphs. Recall that a \em{corelation} #{X \to Y} is an equivalence relation on the set #{X + Y}, and denote the poset-enriched category of sets and corelations #{\cat{Corel}}. Then there is a diagram like this:}
+
+\quiver{
+    \begin{tikzcd}
+        \cat{OGph} \ar[r] \ar[d] & \cat{Corel} \ar[dl] \\
+        \Rel & 
+    \end{tikzcd}
+}
+\p{Similarly, we could form this diagram:}
+\quiver{
+    \begin{tikzcd}
+        \AffSpcR \ar[r] \ar[d] & \cat{Cumulants} \ar[dl] \\
+        \Euc, & 
+    \end{tikzcd}
+}
+\p{Where #{\cat{Cumulants}} is a category of cumulant-propagating functions.}
+\p{In both cases, the top arrow is a proper functor ("compositional"), but to a category where the compositions are hard to compute. The other arrows are not functorial - in the case of graphs, they are at least lax, but this is not even the case in the polynomial case.}

@@ -1,0 +1,57 @@
+\date{2024-03-08}
+\author{eigil-rischel}
+\import{macros}
+\def\Met{#{\cat{Met}}}
+\def\Fam{#{\mathrm{Fam}}}
+\title{Metric double categories for quantitative category theory}
+
+\p{While attempting to set out foundations for "quantitative category theory", there is often a problem of conflict between two roles that we want the quantities to play:
+    \ul{
+        \li{We may be working in a setting which is naturally metric-enriched, so that there is a notion of distance between morphisms (interpreted as a distance between "generalized points")}
+        \li{However, we may also have a distance attached to each morphism individually. This arises for example in the case of functor categories into categories of the previous kind, where you have a notion of #{\epsilon}-natural transformation for each #{\epsilon}.}
+    }}
+
+\p{Given two dynamical systems on the same state space, their "distance" should probably be the infimum of #{d} so that their distance is bounded by #{d e^t} (if you bound their initial distance and uniformly the distance of their derivatives, you get this type of bound)}
+
+\p{Two trajectories seem to have a distance (the supremal distance between them, or possibly #{\sup_t \frac{d(\gamma_1(t),\gamma_2(t))}{e^t}})}
+
+\p{But there is also a notion of #{\epsilon}-trajectory, where the equations of motion almost hold. Such a thing is within #{d e^t} of a proper trajectory, at least in the smooth dynsys case}
+
+\p{A lens relating two systems can do so "up to epsilon", but the notion of distance between lenses is somewhat less natural(??)}
+
+\p{The problem with the viewpoint suggested by that, is that lenses are supposed to give a functor (and do), but a functor cannot easily be "up to epsilon", whereas the charts are supposed to have a profunctor structure, which accomodates a metric weirdly?}
+
+\p{Profunctors #{\cC \times \cD^{\op} \to \Met} contra profunctors #{\cC \times \cD^{\op} \to \Fam(\RR)}}
+
+\p{Are there good limits or colimits in this setting? Can we find a good double category of quantitative guys?}
+
+\p{Consider the double category of Lawvere metric spaces, short maps(functors), and profunctors. The profunctors have a natural grading, by #{\sup_x \inf_y p(x,y)} - i.e, how close is this to being "defined" everywhere? This doesn't represent non-short maps, but rather fuzzy maps of a sort. Still, this is quite interesting}
+
+\p{Actually, these can represent non-short maps, after a fashion. You can have #{p(x,y) = 0, p(x',y') = 0} even when, say #{d(y,y') = 1} and #{d(x,x') = \epsilon << 1}. But in this case you must also have #{p(x,y') \leq \epsilon} etc. Is there a way to express the "problem" with this profunctor?}
+
+\p{Maybe, what I want when I've previously looked at "a map that's not exact" is "a profunctor that's not a functor". But maybe not}
+
+\p{What about sheaves on a category of finite models}
+
+\p{The contrast between charts and lenses in composition is exactly the contrast between the two modes of transformation of model I previously thought about}
+
+\p{Potentially, we can work with just "nonresidual lenses" for a restricted version, to facilitate "no feedback". But of course in general, there is feedback, how to accomodate this?}
+
+\p{A limited goal might be to extract dynamical systems as a full subcategory of a sheafy category of systems (but without feedback)}
+
+\p{Traditionally in math, we almost always want to work with \em{Lipschitz maps in general}, as opposed to non-expansive maps. But these don't preserve individual distances, so if we want to speak of sequences that ought to converge, they can only be modeled as a whole}
+
+\p{Possibly we want to speak of "maps up to epsilon" but Lipschitz \em{functors}}
+
+\p{Expressing a continuous system as a limit of discrete ones requires time-reindexing in a way which does not fit comfortably into Myers' framework}
+
+\p{Category where objects are systems and morphisms are #{N \cdot X \to Y}, where #{NX} is #{X} running at speed times #{N}. This doesn't work for open systems, because you will need multiple inputs!}
+\p{(In general we may want a map where the run-speed #{depends on the point,} I guess, but that seems much more complicated)}
+\p{There is also a speedup-times-n operation in the "variable-sharing" paradigm. But in both cases you need to change the interface - because you really need to sync the inputs, I think this is unavoidable}
+\p{In the variable-setting paradigm there is another problem - since the outputs cannot depend on the inputs! This is at least avoided by the variable-sharing doctrine}
+\p{Solving this problem lets you speak of the diagram whose limit should be the smooth system. But how does this actually work?}
+\p{The limit of those charts should probably be the smooth system, even if we use no approximation stuff!}
+\p{You \em{can} find an interface for #{2\cdot X} in the variable-setting case, using Poly, although it's quite complicated}
+
+\p{There is a "shitty #{2 \cdot (-)}" in the var-setting case, which relates the different Euler methods of the system to each other (on the nose, potentially), given by just stepping forward multiple times with the same input. Not functorial in the lens direction, but is functorial in the chart direction}
+\p{But we can bound the "distance" between #{\phi_*(2S)} and #{2 \phi_*S} for #{\phi} a lens in terms of the "step size" of #{S}.}

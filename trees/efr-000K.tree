@@ -1,0 +1,21 @@
+\date{2024-03-12}
+\author{eigil-rischel}
+\title{Horizontal factor condition}
+\taxon{definition}
+\import{macros}
+\p{Let \DD be a double category and #{D \in \DD} be an object. We say #{D} satisfies \em{the horizontal factor condition} if every square of this form}
+\quiver{
+    \begin{tikzcd}
+    D \ar[r] \ar[dd, equals] & X_1 \ar[d]\\
+    & X_2 \ar[d] \\
+    D \ar[r] & X_3 
+    \end{tikzcd}
+}
+\p{admits a \em{unique} factorization of this form:}
+\quiver{
+    \begin{tikzcd}
+    D \ar[r] \ar[d, equals] & X_1 \ar[d]\\
+    D \ar[r] \ar[d, equals] & X_2 \ar[d] \\
+    D \ar[r] & X_3 
+    \end{tikzcd}
+}

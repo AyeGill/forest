@@ -1,0 +1,7 @@
+\date{2024-03-12}
+\author{eigil-rischel}
+\title{Spanlike double category}
+\taxon{definition}
+\import{macros}
+
+\p{A double category \DD is \em{spanlike} if every object #{D \in \DD} satisfies the [horizontal factor condition](efr-000K)}

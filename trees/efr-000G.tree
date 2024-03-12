@@ -13,7 +13,7 @@
 
 \p{Given two dynamical systems on the same state space, their "distance" should probably be the infimum of #{d} so that their distance is bounded by #{d e^t} (if you bound their initial distance and uniformly the distance of their derivatives, you get this type of bound)}
 
-\p{Two trajectories seem to have a distance (the supremal distance between them, or possibly #{\sup_t \frac{d(\gamma_1(t),\gamma_2(t))}{e^t}})}
+\p{Two trajectories  seem to have a distance (the supremal distance between them, or possibly #{\sup_t \frac{d(\gamma_1(t),\gamma_2(t))}{e^t}})}
 
 \p{But there is also a notion of #{\epsilon}-trajectory, where the equations of motion almost hold. Such a thing is within #{d e^t} of a proper trajectory, at least in the smooth dynsys case}
 

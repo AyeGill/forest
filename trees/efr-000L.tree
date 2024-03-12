@@ -1,0 +1,23 @@
+\date{2024-03-12}
+\author{eigil-rischel}
+\import{macros}
+\taxon{proposition}
+\title{Representable double functor}
+\p{Let \DD be a double category, and let #{A \in \DD} be an object. Then we may try to define a double functor #{\DD(A,-): \DD \to \Span}, given as follows:}
+\ul{
+    \li{An object #{X} goes to the set of horizontal arrows (we use the convention that the \em{vertical} morphisms in \Span are the spans) #{\DD_h(A,X)}}
+    \li{A horizontal map #{X \to Y} goes to the postcomposition function. This is plainly strictly functorial}
+    \li{A vertical map #{f: X \to Y} goes to the span with apex the set of 2-cells of this form: \quiver{
+        \begin{tikzcd}
+            A \ar[d,equals] \ar[r] & X \ar[d, "f"]\\
+            A \ar[r] & Y,
+        \end{tikzcd}
+    } with the two legs of the span picking out the top and bottom functions.}
+    \li{A 2-cell goes to the map of spans given by horizontal composition with that 2-cell}
+}
+
+\p{It is not too hard to see that this defines a \em{lax unital} double functor (which is strict in the horizontal direction,) but it is not clear whether it is pseudofunctorial in the vertical direction. Pseudofunctoriality here is exactly the statement that #{A} has the [horizontal factor condition](efr-000K). Thus: \ul{
+    \li{#{\DD(A,-)} as above defines a lax unital double functor, horizontally strict, #{\DD \to \Span}}
+    \li{If #{A} satisfies the horizontal factor condition, this functor is a pseudo double functor}
+    \li{If \DD is [spanlike](efr-000J), this holds for all #{A \in \DD}}
+}}

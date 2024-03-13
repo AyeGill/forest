@@ -1,0 +1,6 @@
+\date{2024-03-13}
+\author{eigil-rischel}
+\import{macros}
+\taxon{example}
+\p{The [[efr-000P]] does not in general commute with the wiring functor #{\cat{Sys}(\binom{I}{O}) \to \cat{Sys}(\binom{I'}{O'})} given by a lens #{\binom{I}{O} \to \binom{I'}{O'}}
+\p{To see this, let #{s: X \to X} be some deterministic dynamical system, consider the lens #{\binom{X \times X}{X} \to \binom{*}{*}} giving this system (by abuse of notation, call it also #{s}), and consider the tautological dynamical system on #{X} with interface #{\binom{X \times X}{X}} (call it #{1_X}). Then clearly by construction #{s_*(1_X) = s}. On the other hand, #{n\cdot s = s^n} is the dynamical system which runs #{s} #{n} times for each step. But #{n \cdot 1_X = 1_X} - since the update of #{1_X} just sets the state to the input, and #{n \cdot (-)} runs the update #{n} times with the \em{same} input. So #{s_*(n1_X) = s \neq n \cdot s}, at least not in general}

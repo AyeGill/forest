@@ -1,0 +1,56 @@
+\author{eigil-rischel}
+\date{2020-03-18}
+\title{Workshop on Process Theory for Security Protocols and Cryptography}
+\import{macros}
+\subtree{
+    \title{Categorical Composable Cryptography (Martti Karvonen)}
+    \p{JW with Anne Broadbent}
+    \p{Motivation: std cryptography is not \em{composable}. Existing approaches to compose things are a bit hacky, very complicated. Seems to beg for categorical formalization.}
+    \p{Main idea of this work: cryptography as a resource theory. The resources are \em{functionalities}, keys, channels etc, and transformations are protocols that build resource #{Y} \em{securely} from resource #{X}}
+    \p{Grothendieck construction gives you a theory of "correct" protocols, the secure ones form a subcategory}
+    \p{Example: #{\mathrm{OTP}: \mathrm{random key} \otimes \mathrm{insecure channel} \to \mathrm{secure channel}}
+    \p{Simulation paradigm: anything attackers could do in the real case could also happen in the ideal case. (Ideal case: total security).}
+    \p{Two ways of formalizing this: fixing a concrete low-level framework (UC-security), or "abstract cryptography" and "constructive cryptography"}
+
+    \p{Formalize the simulation paradigm over an arbitrary category.}
+    \p{Benefits: inherently composable, can vary attacker model (not just malicious attackers, eg "honest but curious"), different notions of security (not just perfect, finite-key regimen), CT connections, bring in string diagrams etc}
+    \p{Optimistic convention: string diagrams go from bottom to top}
+    \p{A resource theory: a SMC where you mainly care about whether a hom-set is empty or not.}
+    \p{Can some noisy channels to a less noisy channel?}
+    \p{Can this distribution be transformed to another one deterministically?}
+    \p{Is there a protocol transforming this quantum state to this one?}
+    
+    \p{Many resource theories are the Grothendieck construction of #{\cD \to \cC \to \Set,} where you first have free operations, then their interpretation, then the resources of each type}
+    \p{EG; let #{\cC_F \subseteq \cC} be a subcat of free operations. Then #{\int (\cC(I,-): \cC_F \to \Set)} is a resource theory of states}
+    \p{N-partite version: consider #{\otimes: \cC_F^N \to \cC}. Then you have states that you have to transform \em{with #{N} parties}, who have to work "independently"}
+    \p{What if some actors in this partite situation are dishonest? Simulartion paradigm: secure if for all attacker actions, there is another attacker action so that...}
+    \p{To talk about security (abstractly): for each protocol, a set of attacks. Secure if for all attacks, there is an attack on the target with the same end-results}
+    \p{#{\cA(fg) = \cA(f)\cA(G), \cA(f \otimes g) = \cA(id) \cup (\cA(f) \otimes \cA(g))}}
+    \p{Attackers can map \em{to} a different type than the required one}
+    \p{Straightforward proof: protocols secure against attack model \cA are closed under #{\circ, \otimes}. So they form a symmetric monoidal category. So does "protocols secure against a list of attackers"}
+
+    \p{Simple example: insecure channel + random key to secure channel}
+    \p{An insecure protocol would be: eve deletes whatever she sees}
+    \p{Uniform randomness: hopf algebra with integral. Then one-time-pad strategy is secure against attacks by Eve.}
+    \p{To do "computational security", use metrics and #{\approx} (efficient indistinguishability).}
+}
+\subtree{
+    \title{Polar Shuffles (Mario Roman)}
+    \p{JW with Matt Earnshaw, Chad Nester}
+    \p{A categorical theory of \em{message passing}}
+    \p{Motivation: What are the fundmental structures of message passing?}
+    \p{They can be freely constructed over a SMC. They are algebras of a universal operad, and have a concurrency-style internal language}
+    \p{Cornerings: the horizontal cat. of the free single object proarrow equipment represents communicating processes.}
+    \p{Allows you to decompose a string diagram into components that are not themselves morphisms}
+    \p{Horizontal part of the cornering is the original category plus freely added dualities}
+    \p{"Polarization is left adjoint to taking left adjoints" - freely adding right adjoints to everything in the monoidal category (this is the free cornering thing)}
+    \p{Shuffles: permutations that preserve the relative order of some subwords (interleavings). #{Shuf(n_1, \dots n_k) = (formula)}}
+    \p{Duoidal categories. With two tensors: #{A \ltri B}: "A, later B" #{\otimes}: parallel composition}
+    \{(X \ltri Y) \otimes (U \ltri V) \to (X \otimes U) \ltri (Y \otimes V).}
+    \p{Normal if units are isomorphic. Physical if normal and tensor-symmetric.}
+    \p{Duoidal categories are "incoherent" - there are two formal maps #{I \ltri I \to I}. But physical duoidal categories are coherent.}
+    \p{Free physical duoidal in a single object is a fully faithful subcat of posets and \em{bijective on objects inclusions}. #{\otimes} is disjoint union, #{\ltri} is disjoint union plus everything in the left side being less than the right side}
+    \p{Shuffles form the free physical monoidal \em{multicategory} on a single object}
+    \p{When drawn in a certain way, the valid shuffles are exactly the \em{acyclic} graphs}
+    \p{Motivates definition of \em{polar shuffles}: instead of adding bidirected edges, add directed edges form an acyclic graph (and let arrows go backwards). Polar shuffles are the free polarized duoidal multicategory. These describe protocols for how communicating processes can interleave their communications}
+}

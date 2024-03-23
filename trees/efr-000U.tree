@@ -74,3 +74,27 @@
    \p{UIP and public is different in general, but they have the same states}
    \p{For private states with identical support set, #{q \leq_{uip} p} if and only if #{q} majorizes #{p}} 
 }
+\subtree{
+    \title{Algebraic Effects & their Applications to Cryptography (Neils Voorneveld)}
+    \p{Towards denotational semantics for crypto protocols.}
+    \p{Features of cryptographic protocols:}
+    \ul{
+        \li{Calling operations such as encode, decode}
+        \li{Invoking effects: Probability, adversarial nondeterminism, global state, time, input-output}
+    }
+    \p{Outline: \ul{
+        \li{How to describe algebraic effects}
+        \li{How to describe \em{handling} algebraic effects}
+        \li{Framework for describing complex interactions}
+    }}
+    \p{What is an algebraic effect? It's about effects described by \em{operations and equations}. Lets you prove \em{equivalence} between effectful programs. Equivalent = no observable difference.}
+    \ul{
+        \li{This update doesn't change the program:}
+        \li{These programs are the same}
+        \li{generalizes to \em{improvements}}
+    }
+    \p{To call an algebraic operation #{op: A \to X}...}
+}
+\subtree{
+    \title{Resources in Crypto Proofs (Peeter Laud)}
+}

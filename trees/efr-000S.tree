@@ -1,9 +1,16 @@
-\date{2024-03-13}
+\date{2024-03-26}
 \author{eigil-rischel}
-\title{On dynamics in metric spaces}
-
-\p{Suppose we want to talk about (discrete-time) dynamical systems on metric spaces, using [[categorical-systems-theory]]-type technology.}
-\p{We will have a function #{s: I \times X \to X,} #{X} the state space and #{I} the inputs. If these are metric spaces, we'll want to bound #{d(s(i,x),s(i',x'))} in some way in terms of the distances #{d(x,x'), d(i,i'),} but how?}
-\p{We probably can't say that #{s} should be distance nonincreasing for the \em{product metric}, because that means changing #{x} and #{i} simultaneously by #{\epsilon} only leads to a change of at most #{\epsilon} in the next state. This rules out for example a system where #{X = I} is a normed vector space and the input is added to the current state.}
-\p{The natural thing is to ask for a map #{I \otimes X \to X}. But since #{\otimes} is not Cartesian, this makes it unclear what the category of lenses and charts should be.}
-\p{A solution is to define the tangent bundle functor to take #{X}, not to the trivial bundle #{X \times X}, but the trivial bundle #{X \times \frac{1}{2}X,} where #{\frac{1}{2}X} is #{X} with all distances halved. Any map #{A \otimes B \to \frac{1}{2}X} is also a map #{A \times B \to X} (but not vice versa! this is an even weaker assumption than nonexpansiveness for #{A \otimes B}). Then we can just use ordinary lenses and charts for the interfaces}
+\taxon{definition}
+\import{macros}
+\def\det{\mathrm{det}}
+\def\Prob{\cat{Prob}}
+\p{Fix any Markov category \cC}
+\p{There is a (pseudo) double category where
+  \ul{
+    \li{The objects are objects of #{\cC}}
+    \li{The vertical category is precisely #{\cC}}
+    \li{The horizontal morphisms #{X \to Y} are tuples #{(\Omega \in \cC, \PP: I \to \Omega, f: \Omega \otimes X \to Y)}, where #{f} is deterministic, with composition given in the obvious way by tensoring and composing}
+    \li{A 2-cell consists of a map #{\Omega_1 \to \Omega_2} in #{\Prob(\cC)} making the obvious square commute }
+  }
+}
+\p{If \cC is causal, there is an extension of this double category with the same 0- and 1-cells, but where the 2-cells #{(\Omega_1, \PP_1, f_1) \to (\Omega_2, \PP_2, f_2)} are required to make the diagram commute only #{\PP_1}-almost certainly}

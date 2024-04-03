@@ -1,0 +1,102 @@
+\author{eigil-rischel}
+\date{2024-03-18}
+\title{Workshop on Process Theory for Security Protocols and Cryptography}
+\import{macros}
+\def\ltri{#{\triangleleft}}
+\subtree{
+    \title{Categorical Composable Cryptography (Martti Karvonen)}
+    \p{JW with Anne Broadbent}
+    \p{Motivation: std cryptography is not \em{composable}. Existing approaches to compose things are a bit hacky, very complicated. Seems to beg for categorical formalization.}
+    \p{Main idea of this work: cryptography as a resource theory. The resources are \em{functionalities}, keys, channels etc, and transformations are protocols that build resource #{Y} \em{securely} from resource #{X}}
+    \p{Grothendieck construction gives you a theory of "correct" protocols, the secure ones form a subcategory}
+    \p{Example: #{\mathrm{OTP}: \mathrm{random key} \otimes \mathrm{insecure channel} \to \mathrm{secure channel}}}
+    \p{Simulation paradigm: anything attackers could do in the real case could also happen in the ideal case. (Ideal case: total security).}
+    \p{Two ways of formalizing this: fixing a concrete low-level framework (UC-security), or "abstract cryptography" and "constructive cryptography"}
+
+    \p{Formalize the simulation paradigm over an arbitrary category.}
+    \p{Benefits: inherently composable, can vary attacker model (not just malicious attackers, eg "honest but curious"), different notions of security (not just perfect, finite-key regimen), CT connections, bring in string diagrams etc}
+    \p{Optimistic convention: string diagrams go from bottom to top}
+    \p{A resource theory: a SMC where you mainly care about whether a hom-set is empty or not.}
+    \p{Can some noisy channels to a less noisy channel?}
+    \p{Can this distribution be transformed to another one deterministically?}
+    \p{Is there a protocol transforming this quantum state to this one?}
+    
+    \p{Many resource theories are the Grothendieck construction of #{\cD \to \cC \to \Set,} where you first have free operations, then their interpretation, then the resources of each type}
+    \p{EG; let #{\cC_F \subseteq \cC} be a subcat of free operations. Then #{\int (\cC(I,-): \cC_F \to \Set)} is a resource theory of states}
+    \p{N-partite version: consider #{\otimes: \cC_F^N \to \cC}. Then you have states that you have to transform \em{with #{N} parties}, who have to work "independently"}
+    \p{What if some actors in this partite situation are dishonest? Simulation paradigm: secure if for all attacker actions, there is another attacker action so that...}
+    \p{To talk about security (abstractly): for each protocol, a set of attacks. Secure if for all attacks, there is an attack on the target with the same end-results}
+    \p{#{\cA(fg) = \cA(f)\cA(G), \cA(f \otimes g) = \cA(id) \cup (\cA(f) \otimes \cA(g))}}
+    \p{Attackers can map \em{to} a different type than the required one}
+    \p{Straightforward proof: protocols secure against attack model \cA are closed under #{\circ, \otimes}. So they form a symmetric monoidal category. So does "protocols secure against a list of attackers"}
+
+    \p{Simple example: insecure channel + random key to secure channel}
+    \p{An insecure protocol would be: eve deletes whatever she sees}
+    \p{Uniform randomness: hopf algebra with integral. Then one-time-pad strategy is secure against attacks by Eve.}
+    \p{To do "computational security", use metrics and #{\approx} (efficient indistinguishability).}
+}
+\subtree{
+    \title{Polar Shuffles (Mario Roman)}
+    \p{JW with Matt Earnshaw, Chad Nester}
+    \p{A categorical theory of \em{message passing}}
+    \p{Motivation: What are the fundmental structures of message passing?}
+    \p{They can be freely constructed over a SMC. They are algebras of a universal operad, and have a concurrency-style internal language}
+    \p{Cornerings: the horizontal cat. of the free single object proarrow equipment represents communicating processes.}
+    \p{Allows you to decompose a string diagram into components that are not themselves morphisms}
+    \p{Horizontal part of the cornering is the original category plus freely added dualities}
+    \p{"Polarization is left adjoint to taking left adjoints" - freely adding right adjoints to everything in the monoidal category (this is the free cornering thing)}
+    \p{Shuffles: permutations that preserve the relative order of some subwords (interleavings). #{Shuf(n_1, \dots n_k) = (formula)}}
+    \p{Duoidal categories. With two tensors: #{A \ltri B}: "A, later B" #{\otimes}: parallel composition}
+    \p{#{(X \ltri Y) \otimes (U \ltri V) \to (X \otimes U) \ltri (Y \otimes V).}}
+    \p{Normal if units are isomorphic. Physical if normal and tensor-symmetric.}
+    \p{Duoidal categories are "incoherent" - there are two formal maps #{I \ltri I \to I}. But physical duoidal categories are coherent.}
+    \p{Free physical duoidal in a single object is a fully faithful subcat of posets and \em{bijective on objects inclusions}. #{\otimes} is disjoint union, #{\ltri} is disjoint union plus everything in the left side being less than the right side}
+    \p{Shuffles form the free physical monoidal \em{multicategory} on a single object}
+    \p{When drawn in a certain way, the valid shuffles are exactly the \em{acyclic} graphs}
+    \p{Motivates definition of \em{polar shuffles}: instead of adding bidirected edges, add directed edges form an acyclic graph (and let arrows go backwards). Polar shuffles are the free polarized duoidal multicategory. These describe protocols for how communicating processes can interleave their communications}
+}
+\subtree{
+    \title{Resource Theories of Privacy and Private Correlations (Tomáš Gonda)}
+    \p{Resource theory of private info. States: #{I \to S \otimes E} (state on #{S}!) and maps #{f: S \to T \otimes E}. Eg stochastic maps or quantum channels.}
+
+    \p{#{p \sim q} e-p equivalent if #{p} can be transformed to #{q} and vice versa by transforming the environment (but in an uncorrelated-with-private info way).}
+    \p{#{[f,E]} is transparent if #{f} left invertible: no info lost (if we use both public and private info)}
+    \p{"Discarding" operation which leaks everything and retains no is transparent (ep-unique transparent map #{S \to I})}
+    \p{We only want to look at transparent maps.}
+    \p{#{\cL = \mathsf{Trans}(\cC)/(\sim_{ep})} is a process theory. We have a Markov structure given by \em{public} copy and discard.}
+    \p{Subcategories of \em{public operations} and \em{universal ignorance preserving operations}}
+    \p{Public state: one equivalent to a copy}
+    \p{Public operations: discarding(with leak), injective deterministic, and public states}
+    \p{Any public operation is equivalent to [something]}
+    \p{State is \em{private} if ep-equivalent to one with #{E = I}}
+    \p{#{[p] \leq_{pub} [q]} if related by a public transformation}
+    \p{For private #{p,q}, #{p \leq q} if related by bijection composed with (private) distribution.}
+    \p{Universal ignorance preserving if it has a certain form - deterministic injective map processing #{s} and random value generated by #{s} but which is leaked to the environment.}
+   \p{UIP and public is different in general, but they have the same states}
+   \p{For private states with identical support set, #{q \leq_{uip} p} if and only if #{q} majorizes #{p}} 
+}
+\subtree{
+    \title{Algebraic Effects and their Applications to Cryptography (Neils Voorneveld)}
+    \p{Towards denotational semantics for crypto protocols.}
+    \p{Features of cryptographic protocols:}
+    \ul{
+        \li{Calling operations such as encode, decode}
+        \li{Invoking effects: Probability, adversarial nondeterminism, global state, time, input-output}
+    }
+    \p{Outline: \ul{
+        \li{How to describe algebraic effects}
+        \li{How to describe \em{handling} algebraic effects}
+        \li{Framework for describing complex interactions}
+    }}
+    \p{What is an algebraic effect? It's about effects described by \em{operations and equations}. Lets you prove \em{equivalence} between effectful programs. Equivalent = no observable difference.}
+    \ul{
+        \li{This update doesn't change the program:}
+        \li{These programs are the same}
+        \li{generalizes to \em{improvements}}
+    }
+    \p{To call an algebraic operation #{op: A \to X} ... }
+}
+\subtree{
+    \title{Resources in Crypto Proofs (Peeter Laud)}
+    \p{...}
+}

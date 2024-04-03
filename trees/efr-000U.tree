@@ -24,7 +24,7 @@
     \p{Many resource theories are the Grothendieck construction of #{\cD \to \cC \to \Set,} where you first have free operations, then their interpretation, then the resources of each type}
     \p{EG; let #{\cC_F \subseteq \cC} be a subcat of free operations. Then #{\int (\cC(I,-): \cC_F \to \Set)} is a resource theory of states}
     \p{N-partite version: consider #{\otimes: \cC_F^N \to \cC}. Then you have states that you have to transform \em{with #{N} parties}, who have to work "independently"}
-    \p{What if some actors in this partite situation are dishonest? Simulartion paradigm: secure if for all attacker actions, there is another attacker action so that...}
+    \p{What if some actors in this partite situation are dishonest? Simulation paradigm: secure if for all attacker actions, there is another attacker action so that...}
     \p{To talk about security (abstractly): for each protocol, a set of attacks. Secure if for all attacks, there is an attack on the target with the same end-results}
     \p{#{\cA(fg) = \cA(f)\cA(G), \cA(f \otimes g) = \cA(id) \cup (\cA(f) \otimes \cA(g))}}
     \p{Attackers can map \em{to} a different type than the required one}

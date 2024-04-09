@@ -1,0 +1,6 @@
+\date{2024-03-15}
+\author{eigil-rischel}
+\import{macros}
+\title{On copyability}
+\p{In a Markov category, the monoidal product is product-like, but not Cartesian. This is often contextualized as a limitation on \em{copyability} - only certain maps (the deterministic ones) are copyable.}
+\p{We can contrast this with \cat{Met}, the category of metric spaces and nonexpansive maps (with the #{1}-tensor product, where #{d((x,y),(x',y')) = d(x,x')+ d(y,y')}). This is also a sort of product-like tensor product. But here copyability is not a property of morphisms, but of objects}

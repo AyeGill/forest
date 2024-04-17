@@ -5,7 +5,6 @@
 \def\sh{#{\operatorname{sh}}}
 \def\PSh{#{\operatorname{PSh}}}
 \def\Ch{#{\operatorname{Ch}}}
-\def{}
 \title{Sheaf cohomology is derived sheafification}
 \p{This is a description of a neat result which is certainly known to experts, but which is hard to find written down anywhere.}
 \p{Let #{X} be a site, let \cA be an abelian category, and consider #{\Sh(X,\cA)}. Suppose \cA is such that this category of sheaves has enough injectives. We may form the derived \em{#{(\infty,1)-categories}} #{D(\Sh(X,\cA)), D(\cA)}. The evaluation at #{U \in X} functor #{\Gamma_U} induces a (#{\infty}-) functor #{D(\Sh(X,\cA)) \xto{R\Gamma_U} D(\cA)}, the right derived functor. Sheaf cohomology is then the composite ##{\Sh(X,\cA) \to D(\Sh(X,\cA)) \to D(\cA),} optionally followed by taking homology objects.}

@@ -1,0 +1,25 @@
+\date{2024-04-18}
+\author{eigil-rischel}
+\title{Computing transformations of models}
+\subtree{
+    \title{Introduction}
+    \p{}
+}
+\subtree{
+    \title{Categorical Systems Theory}
+}
+\subtree{
+    \title{Categories of Stochastic Dynamical Systems}
+}
+\subtree{
+    \title{Transformations as reductions}
+}
+\subtree{
+    \title{Computing transformations}
+}
+\subtree{
+    \title{Approximate transformations}
+}
+\subtree{
+    \title{Conservative transformations of possibilistic systems}
+}

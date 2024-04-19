@@ -243,6 +243,7 @@
 \def\Man{#{\cat{Man}}}
 \def\Vect{#{\cat{Vect}}}
 
+
 % Poly
 
 \def\lott{#{\mathtt{lott}}}
@@ -258,6 +259,7 @@
 
 % Geometry
 
+\def\Top{#{\cat{Top}}}
 \def\Mfld{#{\cat{Mfld}}}
 \def\Subm{#{\cat{Subm}}}
 \def\CPoly{#{\cat{CPoly}}}

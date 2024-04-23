@@ -1,0 +1,10 @@
+\date{2024-04-23}
+\author{eigil-rischel}
+\import{macros}
+\title{Lagrange Multipliers for minmax problems}
+\p{
+    Let #{L: X \times Y \to \RR} be a minmax problem.
+    Suppose #{X,Y} are convex subsets of real vector spaces, and #{L} is differentiable.
+    Suppose #{(x,y)} is a primal-dual optimal point (a state of #{L \otimes L^*}).
+    Then #{\frac{\partial L}{\partial x}(x,y) = \frac{\partial L}{\partial y}(x,y) = 0}
+}

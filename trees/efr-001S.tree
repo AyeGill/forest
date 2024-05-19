@@ -7,11 +7,11 @@
 \def\Conc{\cat{Conc}}
 \p{
     The assignment
-    ##{(X,Y,L) \mapsto (X,L^+),} ##{(\phi^+,\phi^-): L \to L' \mapsto \phi^+}
+    ##{(X,Y,L) \mapsto (X,L^+),} ##{(\phi^+,\phi^-): L \to L' \mapsto \phi^+} (see \ref{efr-001D})
     define a functor #{(-)^+: \Minmax \to \Conv}
 }
 \p{
-    Similarly, #{(-)^-} defines a functor #{\Minmax^\op \to \Conc}.
+    Similarly, #{(-)^-} defines a functor #{\Minmax \to \Conc^\op}. (The reason for this idiosyncratic way of writing a contravariant functor will become apparent in a minute)
 }
 \p{
     The assignment #{(X,f) \mapsto (X,-f)} defines a functor (identity on morphisms) #{\Conc \to \Conv}, and vice versa. Then #{L^- = -(L^*)^+}

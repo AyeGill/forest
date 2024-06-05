@@ -1,0 +1,7 @@
+\date{2024-05-19}
+\taxon{proposition}
+\author{eigil-rischel}
+\import{macros}
+\p{
+  The localization #{\Conc^\op \subseteq \Minmax} and the colocalization #{\Conv \subseteq \Minmax} are monoidal, in the sense that monoidal products of (co)local equivalences are again local equivalences (this just means that the classes of forwards and backwards maps are stable under monoidal product).
+}

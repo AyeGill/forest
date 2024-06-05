@@ -178,10 +178,13 @@
 \def\twoto{#{\Rightarrow}}
 
 \def\cat[c]{#{\mathsf{\c}}}
+\def\twocat[c]{#{\mathcal{\c}}}
 \def\dblcat[name]{#{\cat{\mathbb \name}}}
 
-\def\Cat{#{\cat{Cat}}}
+\def\Cat{#{\cat{Cat}}} %should perhaps be a 2-category by default...or double?
+\def\CAT{#{\cat{CAT}}}
 \def\TwoCat{#{\cat{2\text{-}Cat}}}
+\def\Gray{#{\cat{Gray}}}
 \def\Graph{#{\cat{Graph}}}
 \def\dblCat{#{\dblcat{Cat}}} % equipment of cats, not to be confused with DblCat
 \def\Mult{#{\cat{Mult}}}
@@ -207,6 +210,14 @@
 \def\Org{#{\dblcat{Org}}}
 \def\DOrg{#{\dblcat{DOrg}}}
 
+\def\Meas{#{\cat{Meas}}}
+\def\Stoch{#{\cat{Stoch}}}
+\def\NoiseStoch{#{\cat{NoiseStoch}}}
+
+\def\Prob{#{\operatorname{\mathbf{Prob}}}}
+
+\def\horiz{\mathcal{h}}
+
 \def\List{#{\mathbf{List}}}
 
 \def\cofree{#{\fC}}
@@ -219,6 +230,7 @@
 \def\Pt{#{\operatorname{\cP\mathrm{t}}}}
 \def\Sh{#{\operatorname{\cS\mathrm{h}}}}
 \def\Open{#{\cO}}
+\def\Spec{#{\mathrm{Spec}}}
 
 \def\Poly{#{\cat{Poly}}}
 \def\MonPoly{#{\cat{Mon}(\Poly)}}
@@ -227,6 +239,11 @@
 \def\Csp{#{\cat{Csp}}}
 \def\Edit{#{\dblcat{Edit}}}
 
+\def\parents{#{\operatorname{\mathrm{pa}}}}
+
+\def\CPN{#{\operatorname{\mathbf{CPN}}}}
+\def\CausDiag{#{\operatorname{\mathbf{CausDiag}}}}
+\def\sample{#{\mathbf{sample}}}
 
 % Universal Algebra
 
@@ -333,3 +350,19 @@
 \def\image[source]{
   \xml{center}{\xml{img}[src]{\source}{}}
 }
+
+% Convex duality
+
+\def\Minmax{\cat{Minmax}}
+\def\Conv{\cat{Conv}}
+\def\Conc{\cat{Conc}}
+
+\def\braket[contents]{#{\langle \contents \rangle}}
+
+\def\eRR{#{\overline{\RR}}}
+
+%% Non-syntax-erroring parentheses
+\def\lpar{#{\startverb(\stopverb}}
+\def\rpar{#{\startverb)\stopverb}}
+\def\lsqb{#{\startverb[\stopverb}}
+\def\rsqb{#{\startverb]\stopverb}}
